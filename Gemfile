@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.7'
 gem 'less-rails-bootstrap', '2.0.13'
+gem 'therubyracer', '0.10.1'
 
 
 group :development do
