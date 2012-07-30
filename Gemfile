@@ -8,6 +8,7 @@ gem 'therubyracer', '0.10.1'
 group :development do
   gem 'sqlite3'
   gem 'quiet_assets', '1.0.1'
+  gem 'thin', '1.4.1'
 end
 
 # Gems used only for assets and not required

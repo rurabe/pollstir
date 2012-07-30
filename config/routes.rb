@@ -3,6 +3,10 @@ Pollstir::Application.routes.draw do
   root :to => 'polls#index'
 
   resources :polls
+  
+  match '/:id' => 'polls#show'
+  match '/edit/:id' => 'polls#edit'
+  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

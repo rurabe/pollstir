@@ -1,0 +1,10 @@
+<h1><%= @poll.title %></h1>
+<p>Congratulations! Your poll has been created at:</p>
+
+<blockquote><%= full_public_url(@poll) %></blockquote>
+
+<p>You (or anyone else!) can edit this poll at:</p>
+
+<blockquote><%= full_edit_url(@poll) %></blockquote>
+
+<p>Keep it secret, keep it safe.</p>
