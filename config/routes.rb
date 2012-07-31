@@ -1,5 +1,7 @@
 Pollstir::Application.routes.draw do
 
+  get "responses/new"
+
   root :to => 'polls#index'
 
   resources :polls do
