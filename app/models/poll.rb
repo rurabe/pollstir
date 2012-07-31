@@ -1,14 +1,22 @@
 class Poll < ActiveRecord::Base
   attr_accessible :edit_url, :public_url, :title
   
-  validates :title, presence: true
-  validates :public_url, uniqueness: { case_senstive: false }, :allow_blank => true
+  has_many :questions
+  has_many :responses
   
+  validates :title, presence: true
+  validates :public_url, uniqueness: { case_senstive: false, allow_blank: true }
+  
+  before_create :parameterize_url
   before_create :generate_urls
 
 
   
   protected
+  
+    def parameterize_url
+      self.public_url = self.public_url.parameterize
+    end
     
     def generate_urls
       self.public_url = generate_public_url if self.public_url.blank?
@@ -17,7 +25,7 @@ class Poll < ActiveRecord::Base
     
     def generate_public_url
       public_url = Settings::POLL_NAMES[rand(Settings::POLL_NAMES.length)] + rand(100).to_s
-      while !Poll.find_by_public_url(public_url).nil?
+      while Poll.find_by_public_url(public_url)
         public_url = Settings::POLL_NAMES[rand(Settings::POLL_NAMES.length)] + rand(100).to_s
         puts public_url
       end

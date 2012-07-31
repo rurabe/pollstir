@@ -1,2 +1,23 @@
-<h1>Polls#edit</h1>
-<p>Find me in app/views/polls/edit.html.erb</p>
+<h1><%= @poll.title %></h1>
+<p>Edit this poll:</p>
+
+<%=form_for @poll, action: "update" do |f| %>
+
+	<%= f.label :title %>
+	<%= f.text_field :title %>
+
+	<%= f.label "Custom URL (optional)"%>
+	<%= f.text_field :public_url %>
+	<br>
+	<%= f.submit "Update my poll"%>
+<% end %>
+
+<div>
+	<%= link_to new_poll_question_path(@poll) do %>
+		<button class="btn btn-primary">New Question</button>
+	<% end %>
+</div>
+
+<div>
+	<%= render partial: "question", collection: @questions %>
+</div>

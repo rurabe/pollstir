@@ -1,0 +1,10 @@
+<h1>New Question</h1>
+
+<%= form_for @question, url: poll_questions_path(@poll) do |f| %>
+
+	<%= f.label "Question prompt" %>
+	<%= f.text_field :prompt %>
+	<br>
+	<%= f.submit "Create question"%>
+
+<% end %>

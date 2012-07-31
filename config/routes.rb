@@ -1,10 +1,11 @@
 Pollstir::Application.routes.draw do
-  
+
   root :to => 'polls#index'
 
-  resources :polls
+  resources :polls do
+    resources :questions
+  end
   
-  match '/:id' => 'polls#show'
   match '/edit/:id' => 'polls#edit'
   
 

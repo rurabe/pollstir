@@ -7,9 +7,24 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	
+<div class="navbar">
+	<div class="navbar-inner">
+		<div class="container">
+			<%= link_to "Pollstir", root_path, :class => "brand" %>
+		</div>
+	</div>	
+</div>
+
 <div class="container">
-	<%= yield %>
+	<div class="row">
+		<% if flash[:notice]%>
+			<div class="alert alert-success">
+				<%= flash[:notice] %>
+			</div>
+		<% end %>
+	
+		<%= yield %>
+	</div>
 </div>
 
 </body>

@@ -1,0 +1,10 @@
+<h1>Edit Question</h1>
+
+<%= form_for @question, url: poll_question_path(@poll,@question) do |f| %>
+
+	<%= f.label "Question prompt" %>
+	<%= f.text_field :prompt %>
+	<br>
+	<%= f.submit "Update question"%>
+
+<% end %>
