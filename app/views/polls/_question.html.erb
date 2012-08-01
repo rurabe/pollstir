@@ -3,7 +3,24 @@
 		<%= question.prompt %>
 	</div>
 	<div class="span5">
-		<textarea class="span5" rows="4"></textarea>
+		<table class="table table-striped span5">
+			<th class="span2">
+				Time
+			</th>
+			<th class="span3">
+				Answer
+			</th>
+		<% question.answers.each do |answer| %>
+			<tr>
+				<td>
+					<%= nice_time(answer.created_at) %>
+				</td>
+				<td>
+					<%= answer.body %>
+				</td>
+			</tr>
+		<% end %>
+		</table>
 	</div>
 	<div class="span2">
 		<% if @editable %>

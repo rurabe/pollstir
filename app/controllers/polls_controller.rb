@@ -20,7 +20,7 @@ class PollsController < ApplicationController
   def update
     @poll = Poll.find_by_id(params[:id])
     if @poll.update_attributes(params[:poll])
-      redirect_to poll_path(@poll)
+      redirect_to @poll
     else
       redirect_to edit_poll_path(@poll.edit_url)
     end
@@ -33,7 +33,7 @@ class PollsController < ApplicationController
   end
 
   def edit
-    @poll = Poll.find_by_edit_url(params[:id])
+    @poll = Poll.find_by_edit_url(params[:slug])
     @questions = @poll.questions
     @editable = true
   end

@@ -1,2 +1,13 @@
-<h1>Responses#new</h1>
-<p>Find me in app/views/responses/new.html.erb</p>
+<h1><%= @poll.title %></h1>
+
+<%= form_for [@poll, @response] do |f| %>
+	<%= f.fields_for :answers do |g| %>
+		<div class="fields">
+			<%= g.label :body, g.object.question.prompt %>
+			<%= g.text_area :body, rows: 3 %>
+			<%= g.hidden_field :question_id %>
+		</div>
+	<% end %>
+
+	<%= f.submit %>
+<% end %>

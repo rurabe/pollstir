@@ -5,10 +5,15 @@ gem 'less-rails-bootstrap', '2.0.13'
 gem 'therubyracer', '0.10.1'
 
 
-group :development do
+group :development, :test do
   gem 'sqlite3'
   gem 'quiet_assets', '1.0.1'
   gem 'thin', '1.4.1'
+  gem 'rspec-rails', '~> 2.0'
+	gem 'simplecov'
+	gem 'guard'
+	gem 'guard-rspec'
+  gem 'shoulda-matchers'
 end
 
 # Gems used only for assets and not required
@@ -18,7 +23,6 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
 end

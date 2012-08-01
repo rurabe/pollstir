@@ -5,10 +5,15 @@ Pollstir::Application.routes.draw do
   root :to => 'polls#index'
 
   resources :polls do
-    resources :questions
+    resources :questions do
+      resources :answers, :only => [:create]
+    end
+
+    resources :responses, :only => [:new, :create]
   end
   
-  match '/edit/:id' => 'polls#edit'
+  match '/edit/:slug' => 'polls#edit'
+  match '/:slug' => 'responses#new'
   
 
   # The priority is based upon order of creation:
